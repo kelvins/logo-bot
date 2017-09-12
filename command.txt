@@ -1,0 +1,1 @@
+python /Users/kelvinsp/Desktop/MLBOT/code/bot.py --input /Users/kelvinsp/Desktop/MLBOT/input/ --marker /Users/kelvinsp/Desktop/MLBOT/marker.png --output /Users/kelvinsp/Desktop/MLBOT/output/ --size 30 --position right_bottom
