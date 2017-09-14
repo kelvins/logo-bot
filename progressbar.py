@@ -1,16 +1,18 @@
+
 import sys
+
 
 class ProgressBar(object):
 
     def __init__(self, total, prefix='Progress:', suffix='Complete', decimals=2, bar_length=50, char="#"):
         """
-        It is used to show a progress bar.
-        :param total: the total value of the progress bar (100%)
-        :param prefix: the prefix show before the progress bar (default is 'Progress:')
-        :param suffix: the suffix show after the progress bar (default is 'Complete')
-        :param decimals: the number of decimal places
-        :param bar_length: the length/width of the progress bar
-        :param char: the char that will be used to fill the progress bar
+        This class is used to show a progress bar.
+        :param total: the total value of the progress bar (e.g. 100%)
+        :param prefix: the prefix shown before the progress bar (default is 'Progress:')
+        :param suffix: the suffix shown after the progress bar (default is 'Complete')
+        :param decimals: the number of decimal places (default is 2)
+        :param bar_length: the length/width of the progress bar (default is 50)
+        :param char: the char that will be used to fill the progress bar (default is #)
         """
         self.total = total
         self.prefix = prefix
@@ -18,7 +20,6 @@ class ProgressBar(object):
         self.decimals = decimals
         self.bar_length = bar_length
         self.char = char
-
 
     def update(self, progress):
         """
@@ -35,4 +36,3 @@ class ProgressBar(object):
         if progress >= self.total:
             sys.stdout.write('\n')
         sys.stdout.flush()
-
