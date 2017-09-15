@@ -42,7 +42,9 @@ Just change the paths to the project location on your computer.
 
 ## Command to run the tests
 
+```
 python -m unittest discover -s /Users/kelvinsp/Github/logo-bot/tests/ -p '*_test.py'
+```
 
 ## Example
 

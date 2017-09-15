@@ -9,7 +9,7 @@ class Logo(object):
 
     __valid_positions = ["top_left", "top_center", "top_right",
                          "center_right", "bottom_right", "bottom_center",
-                         "bottom_left", "center_left"]
+                         "bottom_left", "center_left", "center"]
 
     __valid_image_types = ["png", "jpg", "jpeg", "bmp"]
 
@@ -94,6 +94,9 @@ class Logo(object):
             pos_y = image_height - logo_height
         elif self.position == "center_left":
             pos_x = 0
+            pos_y = (image_height/2) - (logo_height/2)
+        elif self.position == "center":
+            pos_x = (image_width/2) - (logo_width/2)
             pos_y = (image_height/2) - (logo_height/2)
 
         return pos_x, pos_y
