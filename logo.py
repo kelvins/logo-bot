@@ -106,7 +106,7 @@ class Logo(object):
         # Load the original logo image
         original_logo = Image.open(self.logo_filename)
 
-        for dirname, dirnames, filenames in os.walk(self.input):
+        for dirname, dirnames, filenames in os.walk(self.input_folder):
 
             total = len(filenames)-1
 
@@ -117,7 +117,7 @@ class Logo(object):
             for filename in filenames:
                 # Extract the image type/format
                 image_type = filename.split(".")
-                image_type = image_type[len(type)-1]
+                image_type = image_type[len(image_type)-1]
 
                 if image_type in self.__valid_image_types:
                     # Load the image
@@ -136,7 +136,10 @@ class Logo(object):
 
                     image.paste(logo, (pos_x, pos_y), mask=logo)
 
-                    image.save(self.output_folder + filename + self.output_type)
+                    # Creates a new filename removing the old image format
+                    new_filename = filename.split(".")
+                    new_filename = "".join(new_filename[:len(new_filename)-1])
+                    image.save(self.output_folder + new_filename + "." + self.output_type)
 
                     img_number += 1
                     progress_bar.update(img_number)

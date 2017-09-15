@@ -1,1 +1,7 @@
-python /Users/kelvinsp/Desktop/MLBOT/code/bot.py --input /Users/kelvinsp/Desktop/MLBOT/input/ --marker /Users/kelvinsp/Desktop/MLBOT/marker.png --output /Users/kelvinsp/Desktop/MLBOT/output/ --size 30 --position right_bottom
+python C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\logobot.py 
+       --input C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\tests\\input\\ 
+       --logo C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\tests\\logo.png 
+       --output C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\tests\\output\\ 
+       --size 20 
+       --position bottom_right 
+       --type png

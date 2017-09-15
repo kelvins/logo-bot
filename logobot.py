@@ -14,6 +14,7 @@ class LogoBot(object):
     def number_of_files(path):
         for root, dirs, files in os.walk(path):
             return len(files)
+        return 0
 
     def run(self):
         n_of_files = self.number_of_files(self.logo_object.input_folder)
