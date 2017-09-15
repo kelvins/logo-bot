@@ -1,7 +1,14 @@
-python C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\logobot.py 
-       --input C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\tests\\input\\ 
-       --logo C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\tests\\logo.png 
-       --output C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\tests\\output\\ 
-       --size 20 
-       --position bottom_right 
+
+Run the bot:
+
+python /Users/kelvinsp/Github/logo-bot/src/logobot.py \
+       --input /Users/kelvinsp/Github/logo-bot/tests/input/ \
+       --logo /Users/kelvinsp/Github/logo-bot/tests/logo.png \
+       --output /Users/kelvinsp/Github/logo-bot/tests/output/ \
+       --size 20 \
+       --position bottom_right \
        --type png
+
+Run the tests:
+
+python -m unittest discover -s /Users/kelvinsp/Github/logo-bot/tests/ -p '*_test.py'

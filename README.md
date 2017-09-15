@@ -16,12 +16,12 @@ The user can set some parameters to the bot when running it:
 ## Command to put the bot running
 
 ```
-python C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\logobot.py 
-       --input C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\tests\\input\\ 
-       --logo C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\tests\\logo.png 
-       --output C:\\Users\\Kelvin\\Documents\\GitHub\\logo-bot\\tests\\output\\ 
-       --size 20 
-       --position bottom_right 
+python /Users/kelvinsp/Github/logo-bot/src/logobot.py \
+       --input /Users/kelvinsp/Github/logo-bot/tests/input/ \
+       --logo /Users/kelvinsp/Github/logo-bot/tests/logo.png \
+       --output /Users/kelvinsp/Github/logo-bot/tests/output/ \
+       --size 20 \
+       --position bottom_right \
        --type png
 ```
 
