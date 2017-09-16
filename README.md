@@ -11,7 +11,7 @@ You can set the following parameters to the bot:
 - **input**: path to the input folder where the images should be put.
 - **logo**: file path and name to the logo file.
 - **output**: path to the output folder where the images with the logo will be put.
-- **size**: the size of the logo. It is defined in percentage and calculated based on each image size. The default option is 30%. The range should be 1% - 100%.
+- **size**: the size of the logo. It is defined in percentage and calculated based on each image size. The default option is 20%. The range should be 1% - 100%.
 - **position**: position where the logo will be added. The default option is **bottom_right**. You can use the following options:
 	- **top_left**: Top left corner.
 	- **top_center**: Top center.
