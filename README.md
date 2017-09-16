@@ -1,5 +1,8 @@
 # Logo Bot
 
+[![Build Status](https://travis-ci.org/kelvins/logo-bot.svg)](https://travis-ci.org/kelvins/logo-bot)
+[![Coverage Status](https://coveralls.io/repos/github/kelvins/logo-bot/badge.svg?branch=master)](https://coveralls.io/github/kelvins/logo-bot?branch=master)
+
 A bot that automatically adds logos to your images. The bot looks for new images in a predefined folder (e.g. input). When it finds a new image, the bot adds a logo in a specific location (e.g. bottom-right) predefined by the user and saves it in an output folder. You can set up the logo location, the logo size (percentage, based on the image size) and the output type/format (e.g. png, jpg, etc).
 
 This bot is very useful when you have a market place or something like that and needs to always add your logo to your images. You just need a minimal programming knowledge to download the source code and run the bot.
