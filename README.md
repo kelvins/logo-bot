@@ -8,9 +8,9 @@ This bot is very useful when you have a market place or something like that and 
 
 You can set the following parameters to the bot:
 
-- **input**: path to the input folder where the images should be put.
-- **logo**: file path and name to the logo file.
-- **output**: path to the output folder where the images with the logo will be put.
+- **input**: path to the input folder where the images should be put. The default options is "./input/".
+- **logo**: file path and name to the logo file. The default options is "./logo.png".
+- **output**: path to the output folder where the images with the logo will be put. The default options is "./output/".
 - **size**: the size of the logo. It is defined in percentage and calculated based on each image size. The default option is 20%. The range should be 1% - 100%.
 - **position**: position where the logo will be added. The default option is **bottom_right**. You can use the following options:
 	- **top_left**: Top left corner.
@@ -40,7 +40,11 @@ python /Users/kelvinsp/Github/logo-bot/src/logobot.py \
 
 Just change the paths to the project location on your computer.
 
+To stop the bot just type 'q' or 'quit' and press Enter/Return.
+
 ## Command to run the tests
+
+The following command can be used to run the tests:
 
 ```
 python -m unittest discover -s /Users/kelvinsp/Github/logo-bot/tests/ -p '*_test.py'
