@@ -9,6 +9,6 @@ install:
 
 script:
   - python tests/tester.py
-  - coverage run --source=logobot tests/tester.py test
+  - coverage run --source=logobot,logo,progressbar tests/tester.py test
 
 after_success: coveralls
