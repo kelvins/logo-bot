@@ -1,6 +1,6 @@
 
 import os
-import argparse
+import sys
 from PIL import Image
 from progressbar import ProgressBar
 
@@ -13,20 +13,38 @@ class Logo(object):
 
     __valid_image_types = ["png", "jpg", "jpeg", "bmp"]
 
-    def __init__(self, input_folder, logo_filename, output_folder, size=20, position="right_bottom", output_type="png"):
+    def __init__(self, input_folder, logo_filename, output_folder, size, position, output_type):
         """
         The init function from the Logo class is used only to get the arguments.
         :param input_folder: path to the input folder
         :param logo_filename: path and filename to the logo file
         :param output_folder: path to the output folder
         :param size: size of the logo (percentage)
-        :param position: position in the image (e.g. bottom_right)
+        :param position: position in the image
         :param output_type: type of the output image
         """
-        self.input_folder = input_folder
-        self.logo_filename = logo_filename
-        self.output_folder = output_folder
-        self.size = size
+
+        if os.path.exists(input_folder):
+            self.input_folder = input_folder
+        else:
+            sys.exit("Invalid input path")
+
+        if os.path.exists(logo_filename):
+            self.logo_filename = logo_filename
+        else:
+            sys.exit("Invalid logo path")
+
+        if os.path.exists(output_folder):
+            self.output_folder = output_folder
+        else:
+            sys.exit("Invalid output path")
+
+        if size <= 0:
+            self.size = 1
+        elif size > 100:
+            self.size = 100
+        else:
+            self.size = size
 
         if position in self.__valid_positions:
             self.position = position
@@ -40,14 +58,19 @@ class Logo(object):
 
     def calc_size(self, image_size, logo_size):
         """
-
-        :param image_size:
-        :param logo_size:
-        :return:
+        Calculates the logo size based on the image size.
+        :param image_size: The size (width and height) of the image.
+        :param logo_size: The size of the logo (width and height).
+        :return: The new size (width and height).
         """
 
         image_width, image_height = image_size
         logo_width, logo_height = logo_size
+
+        if image_width <= 0 or image_height <= 0:
+            return 0, 0
+        if logo_width <= 0 or logo_height <= 0:
+            return 0, 0
 
         if logo_width < logo_height:
             new_height = int(image_height * self.size / 100.0)
@@ -62,19 +85,28 @@ class Logo(object):
 
     def calc_position(self, image_size, logo_size):
         """
-
-        :param image_size:
-        :param logo_size:
-        :return:
+        Calculates the position where the logo must be add.
+        :param image_size: The size (width and height) of the image.
+        :param logo_size: The size of the logo (width and height).
+        :return: The position (x and y) where the logo must be add.
         """
 
         image_width, image_height = image_size
         logo_width, logo_height = logo_size
 
-        pos_x = 0
-        pos_y = 0
+        if image_width <= 0 or image_height <= 0:
+            return 0, 0
+        if logo_width <= 0 or logo_height <= 0:
+            return 0, 0
 
-        if self.position == "top_center":
+        # Bottom right
+        pos_x = image_width - logo_width
+        pos_y = image_height - logo_height
+
+        if self.position == "top_left":
+            pos_x = 0
+            pos_y = 0
+        elif self.position == "top_center":
             pos_x = (image_width/2) - (logo_width/2)
             pos_y = 0
         elif self.position == "top_right":
@@ -83,9 +115,6 @@ class Logo(object):
         elif self.position == "center_right":
             pos_x = image_width - logo_width
             pos_y = (image_height/2) - (logo_height/2)
-        elif self.position == "bottom_right":
-            pos_x = image_width - logo_width
-            pos_y = image_height - logo_height
         elif self.position == "bottom_center":
             pos_x = (image_width/2) - (logo_width/2)
             pos_y = image_height - logo_height
@@ -104,7 +133,6 @@ class Logo(object):
     def add(self):
 
         img_number = 0
-        total = 0
 
         # Load the original logo image
         original_logo = Image.open(self.logo_filename)
@@ -150,17 +178,3 @@ class Logo(object):
             # Set the progress bar to 100% and break the loop
             progress_bar.update(total)
             break
-
-if __name__ == "__main__":
-    # Construct the argparse and parse the arguments
-    ap = argparse.ArgumentParser()
-    ap.add_argument("-i", "--input", required=True, help="Path to the input folder")
-    ap.add_argument("-l", "--logo", required=True, help="Path to the logo file")
-    ap.add_argument("-o", "--output", required=True, help="Path to the output folder")
-    ap.add_argument("-s", "--size", type=int, default=20, help="Size of the marker in percentage")
-    ap.add_argument("-p", "--position", type=str, default="right_bottom", help="Size of the marker in percentage")
-    ap.add_argument("-t", "--type", type=str, default="png", help="The type of the output images")
-    args = vars(ap.parse_args())
-
-    logo = Logo(args["input"], args["logo"], args["output"], args["size"], args["position"], args["type"])
-    logo.add()

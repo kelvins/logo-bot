@@ -3,10 +3,13 @@ import sys
 
 
 class ProgressBar(object):
+    """
+    This class is used to show a progress bar.
+    """
 
-    def __init__(self, total, prefix="Progress:", suffix="Complete", decimals=2, bar_length=50, char="#"):
+    def __init__(self, total, prefix="Progress:", suffix="Complete", decimals=2, bar_length=50, char='#'):
         """
-        This class is used to show a progress bar.
+        The init function is used to get some parameters that will be used to show the progress bar.
         :param total: the total value of the progress bar (e.g. 100%)
         :param prefix: the prefix shown before the progress bar (default is 'Progress:')
         :param suffix: the suffix shown after the progress bar (default is 'Complete')
