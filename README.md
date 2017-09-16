@@ -42,14 +42,6 @@ Just change the paths to the project location on your computer.
 
 To stop the bot just type 'q' or 'quit' and press Enter/Return.
 
-## Command to run the tests
-
-The following command can be used to run the tests:
-
-```
-python -m unittest discover -s /Users/kelvinsp/Github/logo-bot/tests/ -p '*_test.py'
-```
-
 ## Example
 
 |                  **Input**                |                   **Logo**                 |                 **Output**                 |
