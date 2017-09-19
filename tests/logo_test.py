@@ -6,6 +6,7 @@ import unittest
 sys.path.append('./src')
 from logo import Logo
 
+
 class LogoTest(unittest.TestCase):
 
     path = os.path.dirname(os.path.abspath(__file__))
@@ -33,6 +34,10 @@ class LogoTest(unittest.TestCase):
         self.assertEqual(width, 0)
         self.assertEqual(height, 0)
 
+        width, height = logo.calc_size((800, 0), (150, 150))
+        self.assertEqual(width, 0)
+        self.assertEqual(height, 0)
+
         width, height = logo.calc_size((100, 100), (100, 100))
         self.assertEqual(width, 50)
         self.assertEqual(height, 50)
@@ -47,6 +52,11 @@ class LogoTest(unittest.TestCase):
 
     def test_calc_position(self):
         logo = Logo(self.path + "/../input/", self.path + "/../logo.png", self.path + "/../output/", 20, "bottom_right", "png")
+
+        logo.position = "center"
+        x, y = logo.calc_position((0, 600), (150, 150))
+        self.assertEqual(x, 0)
+        self.assertEqual(y, 0)
 
         logo.position = "center"
         x, y = logo.calc_position((800, 600), (0, 150))
