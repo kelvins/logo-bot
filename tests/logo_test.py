@@ -53,30 +53,18 @@ class LogoTest(unittest.TestCase):
         self.assertEqual(x, 0)
         self.assertEqual(y, 0)
 
-        logo.position = "center"
-        x, y = logo.calc_position((100, 100), (50, 50))
-        self.assertEqual(x, 25)
-        self.assertEqual(y, 25)
+        image_size = (100, 100)
+        logo_size = (50, 50)
 
-        logo.position = "top_left"
-        x, y = logo.calc_position((100, 100), (50, 50))
-        self.assertEqual(x, 0)
-        self.assertEqual(y, 0)
+        expected_x = [25, 0, 25, 50, 50, 50, 25, 0, 0]
+        expected_y = [25, 0, 0, 0, 25, 50, 50, 50, 25]
+        position = ["center", "top_left", "top_center", "top_right", "center_right", "bottom_right", "bottom_center", "bottom_left", "center_left"]
 
-        logo.position = "bottom_right"
-        x, y = logo.calc_position((100, 100), (50, 50))
-        self.assertEqual(x, 50)
-        self.assertEqual(y, 50)
-
-        logo.position = "bottom_left"
-        x, y = logo.calc_position((100, 100), (50, 50))
-        self.assertEqual(x, 0)
-        self.assertEqual(y, 50)
-
-        logo.position = "center_right"
-        x, y = logo.calc_position((100, 100), (50, 50))
-        self.assertEqual(x, 50)
-        self.assertEqual(y, 25)
+        for index in range(x):
+            logo.position = position[index]
+            x, y = logo.calc_position(image_size, logo_size)
+            self.assertEqual(x, expected_x[index])
+            self.assertEqual(y, expected_y[index])
 
 if __name__ == '__main__':
     unittest.main()
