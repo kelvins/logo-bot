@@ -66,5 +66,32 @@ class LogoTest(unittest.TestCase):
             self.assertEqual(x, expected_x[index])
             self.assertEqual(y, expected_y[index])
 
+    def test_invalid_parameters(self):
+
+        input_path = self.path + "/../input/"
+        logo_path = self.path + "/../logo.png"
+        output_path = self.path + "/../output/"
+
+        with self.assertRaises(SystemExit):
+            Logo("/invalid/path/123/", logo_path, output_path, 20, "bottom_right", "png")
+
+        with self.assertRaises(SystemExit):
+            Logo(input_path, self.path + "/../invalid_img.png", output_path, 20, "bottom_right", "png")
+        
+        with self.assertRaises(SystemExit):
+            Logo(input_path, logo_path, "/invalid/path/123/", 20, "bottom_right", "png")
+
+        logo = Logo(input_path, logo_path, output_path, -5, "bottom_right", "png")
+        self.assertEqual(logo.size, 1)
+
+        logo = Logo(input_path, logo_path, output_path, 120, "bottom_right", "png")
+        self.assertEqual(logo.size, 100)
+
+        logo = Logo(input_path, logo_path, output_path, 20, "other", "png")
+        self.assertEqual(logo.position, "right_bottom")
+
+        logo = Logo(input_path, logo_path, output_path, 20, "right_bottom", "asd")
+        self.assertEqual(logo.output_type, "png")
+
 if __name__ == '__main__':
     unittest.main()
