@@ -60,7 +60,7 @@ class LogoTest(unittest.TestCase):
         expected_y = [25, 0, 0, 0, 25, 50, 50, 50, 25]
         position = ["center", "top_left", "top_center", "top_right", "center_right", "bottom_right", "bottom_center", "bottom_left", "center_left"]
 
-        for index in range(x):
+        for index in range(len(expected_x)):
             logo.position = position[index]
             x, y = logo.calc_position(image_size, logo_size)
             self.assertEqual(x, expected_x[index])
