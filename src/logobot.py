@@ -1,5 +1,6 @@
 
 import os
+import sys
 import time
 import argparse
 from threading import Thread
@@ -31,7 +32,8 @@ class LogoBot(Thread):
             if self.stopped:
                 break
 
-if __name__ == "__main__":
+
+def main(args):
     # Construct the argument parse and parse the arguments
     ap = argparse.ArgumentParser()
     ap.add_argument("-i", "--input", type=str, default="./input/", help="Path to the input folder")
@@ -40,7 +42,7 @@ if __name__ == "__main__":
     ap.add_argument("-s", "--size", type=int, default=20, help="Size of the marker in percentage")
     ap.add_argument("-p", "--position", type=str, default="bottom_right", help="Size of the marker in percentage")
     ap.add_argument("-t", "--type", type=str, default="png", help="The type of the output images")
-    args = vars(ap.parse_args())
+    args = vars(ap.parse_args(args))
 
     logo = Logo(args["input"], args["logo"], args["output"], args["size"], args["position"], args["type"])
     logo_bot = LogoBot(logo)
@@ -57,4 +59,7 @@ if __name__ == "__main__":
             break
 
     print("Bye Bye")
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
 
