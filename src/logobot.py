@@ -21,16 +21,12 @@ class LogoBot(Thread):
         n_of_files = len(os.listdir(self.logo_object.input_folder))
         self.logo_object.add()
 
-        while True:
+        while not self.stopped:
             current_number_of_files = len(os.listdir(self.logo_object.input_folder))
             if current_number_of_files > n_of_files:
                 self.logo_object.add()
             n_of_files = current_number_of_files
             time.sleep(1)
-
-            # If the stopped flag is true, break it
-            if self.stopped:
-                break
 
 
 def main(args):
