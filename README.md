@@ -33,16 +33,16 @@ You can set the following parameters to the bot:
 You can use the following command to turn the bot on:
 
 ```
-python /Users/kelvinsp/Github/logo-bot/src/logobot.py \
-       --input /Users/kelvinsp/Github/logo-bot/tests/input/ \
-       --logo /Users/kelvinsp/Github/logo-bot/tests/logo.png \
-       --output /Users/kelvinsp/Github/logo-bot/tests/output/ \
+python logobot.py \
+       --input ../input/ \
+       --logo ../logo.png \
+       --output ../output/ \
        --size 20 \
        --position bottom_right \
        --type png
 ```
 
-Just change the paths to the project location on your computer.
+The `logobot.py` file is inside the `src` directory.
 
 To stop the bot just type 'q' or 'quit' and press Enter/Return.
 
